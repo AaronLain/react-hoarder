@@ -4,7 +4,6 @@ import 'firebase/auth';
 
 import './App.scss';
 
-import Auth from '../components/pages/Auth/Auth';
 import DatNavBar from '../components/shared/DatNavBar/DatNavBar';
 
 import fbConnection from '../helpers/data/connection';
@@ -31,10 +30,10 @@ class App extends React.Component {
   }
 
   render() {
+    const { authed } = this.state;
     return (
       <div className="App">
-        <h2>HELLO THERE</h2>
-        <button className="btn btn-info">Hello Yourself</button>
+        <DatNavBar authed={authed}/>
       </div>
     );
   }
