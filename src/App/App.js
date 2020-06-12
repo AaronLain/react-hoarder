@@ -6,6 +6,10 @@ import './App.scss';
 
 import DatNavBar from '../components/shared/DatNavBar/DatNavBar';
 
+import New from '../components/pages/New/New';
+import SingleThing from '../components/pages/SingleThing/SingleThing';
+import Home from '../components/pages/Home/Home';
+
 import fbConnection from '../helpers/data/connection';
 
 fbConnection();
