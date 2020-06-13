@@ -19,9 +19,11 @@ class SingleThing extends React.Component {
     const { item } = this.state;
     return (
       <div className="SingleThing">
-        <div className="container col-8">
-          <h1>{item.itemName}</h1>
-          <p>{item.itemDescription}</p>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{item.itemName}</h5>
+            <p class="card-text">{item.itemDescription}</p>
+          </div>
         </div>
       </div>
     );

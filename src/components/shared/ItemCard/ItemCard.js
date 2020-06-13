@@ -13,7 +13,7 @@ class ItemCard extends React.Component {
           <div className="card-body">
             <img src={item.itemImage} alt="" className="card-img-top" />
             <h5 className="card-title">{item.itemName}</h5>
-            <Link className="btn btn-info" onClick={() => console.error(singleLink)} to={singleLink}>Single</Link>
+            <Link className="btn btn-info" to={singleLink}>Single</Link>
             {/* <Link className="btn btn-warning" to={editLink}><i className="fas fa-pencil-alt"></i></Link> */}
             {/* <button className="btn btn-danger" onClick={() => removeScat(scat.id)}><i className="fas fa-trash-alt"></i></button> */}
             <p className="card-text">{item.itemDescription}</p>
