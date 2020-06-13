@@ -4,7 +4,7 @@ import firebaseConfig from '../apiKeys.json';
 const baseUrl = firebaseConfig.firebaseKeys.databaseURL;
 
 const getItemsByUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/items.json?orderBy="uid"&equalTo="#{uid"`)
+  axios.get(`${baseUrl}/items.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const responseItems = response.data;
       const items = [];
@@ -16,7 +16,9 @@ const getItemsByUid = (uid) => new Promise((resolve, reject) => {
       }
       resolve(items);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => reject(err));
 });
 
-export default { getItemsByUid };
+const getSingleItem = (itemId) => axios.get(`${baseUrl}/items/${itemId}.json`);
+
+export default { getItemsByUid, getSingleItem };
