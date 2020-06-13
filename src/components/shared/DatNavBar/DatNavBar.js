@@ -21,7 +21,7 @@ class DatNavBar extends React.Component {
     return (
       <div className="DatNavBar">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">Hoarder</a>
+          <i className="navbar-brand">Hoarder</i>
           {
             authed
               ? <button className="btn btn-danger ml-auto" onClick={this.logOut}>Logout</button>
