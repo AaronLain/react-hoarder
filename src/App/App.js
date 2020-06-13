@@ -2,6 +2,13 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import {
+  BrowserRouter,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
+
 import './App.scss';
 
 import DatNavBar from '../components/shared/DatNavBar/DatNavBar';
@@ -13,6 +20,8 @@ import Home from '../components/pages/Home/Home';
 import fbConnection from '../helpers/data/connection';
 
 fbConnection();
+
+
 
 class App extends React.Component {
   state = {
@@ -37,7 +46,16 @@ class App extends React.Component {
     const { authed } = this.state;
     return (
       <div className="App">
-        <DatNavBar authed={authed}/>
+        <BrowserRouter>
+          <React.Fragment>
+            <DatNavBar authed={authed} />
+            <div className="container">
+              <div className="row">
+
+              </div>
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }
