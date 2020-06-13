@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
 import {
   BrowserRouter,
   Route,
@@ -12,16 +11,29 @@ import {
 import './App.scss';
 
 import DatNavBar from '../components/shared/DatNavBar/DatNavBar';
-
+import Auth from '../components/pages/Auth/Auth';
 import New from '../components/pages/New/New';
 import SingleThing from '../components/pages/SingleThing/SingleThing';
 import Home from '../components/pages/Home/Home';
+
 
 import fbConnection from '../helpers/data/connection';
 
 fbConnection();
 
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === false
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === true
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
 class App extends React.Component {
   state = {
@@ -51,7 +63,13 @@ class App extends React.Component {
             <DatNavBar authed={authed} />
             <div className="container">
               <div className="row">
-
+                <Switch>
+                  <PrivateRoute path='/home' component={Home} authed={authed} />
+                  <PrivateRoute path='/new' component={New} authed={authed} />
+                  <PrivateRoute path='/singlething/:thingId' component={SingleThing} authed={authed} />
+                  <PublicRoute path='/auth' component={Auth} authed={authed} />;
+                  <Redirect from="*" to="/home"/>
+                </Switch>
               </div>
             </div>
           </React.Fragment>
