@@ -1,8 +1,8 @@
 import React from 'react';
-import itemData from '../../../helpers/data/thingData';
+import { Link } from 'react-router-dom';
 
 import './SingleThing.scss';
-
+import itemData from '../../../helpers/data/thingData';
 
 class SingleThing extends React.Component {
   state = {
@@ -20,17 +20,20 @@ class SingleThing extends React.Component {
     const { itemId } = this.props.match.params;
     itemData.deleteItem(itemId)
       .then(() => this.props.history.push('/home'))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error('cannot remove item: ', err));
   }
 
   render() {
     const { item } = this.state;
+    const { itemId } = this.props.match.params;
+    const editLink = `/edit/${itemId}`;
     return (
       <div className="SingleThing">
         <div className="card mb-3">
           <div className="card-body">
             <h5 className="card-title">{item.itemName}</h5>
             <p className="card-text">{item.itemDescription}</p>
+            <Link className='btn btn-warning' to={editLink}>Edit</Link>
             <button className="btn btn-danger" onClick={this.removeItem}>Delete</button>
           </div>
         </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import authData from '../../../helpers/data/authData';
 import itemData from '../../../helpers/data/thingData';
@@ -29,13 +31,15 @@ class Home extends React.Component {
   }
 
   render() {
+    const user = firebase.auth().currentUser.displayName;
     const { items } = this.state;
     const buildItemCards = items.map((item) => (
       <ItemCard key={item.id} item={item} removeItem={this.removeItem}/>
     ));
     return (
       <div className="container">
-        <h1>Home</h1>
+        <h1>Hello {user}</h1>
+        <h2>Welcome to your stuff!</h2>
         <div className="d-flex flex-wrap">
           {buildItemCards}
         </div>
