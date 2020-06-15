@@ -6,8 +6,8 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Welcome Hoarder!</h1>
-        <h4>Plz login to see your stuff</h4>
+        <h1 className="title">Welcome Hoarder!</h1>
+        <h4 className="subtitle">Please login to see your stuff</h4>
       </div>
     );
   }

@@ -38,8 +38,8 @@ class Home extends React.Component {
     ));
     return (
       <div className="container">
-        <h1>Hello {user}</h1>
-        <h2>Welcome to your stuff!</h2>
+        <h1 className="title">Hello {user}</h1>
+        <h2 className="subtitle">Welcome to your stuff!</h2>
         <div className="d-flex flex-wrap">
           {buildItemCards}
         </div>
