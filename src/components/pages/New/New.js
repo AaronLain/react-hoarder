@@ -3,6 +3,7 @@ import React from 'react';
 import './New.scss';
 
 import itemData from '../../../helpers/data/thingData';
+import authData from '../../../helpers/data/authData';
 
 class New extends React.Component {
   state = {
@@ -37,6 +38,7 @@ class New extends React.Component {
       itemName,
       itemImage,
       itemDescription,
+      uid: authData.getUid(),
     };
     itemData.postItem(newItem)
       .then(() => this.props.history.push('/home'))
