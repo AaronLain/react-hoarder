@@ -20,7 +20,7 @@ class SingleThing extends React.Component {
     const { itemId } = this.props.match.params;
     itemData.deleteItem(itemId)
       .then(() => this.props.history.push('/home'))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error('cannot remove item: ', err));
   }
 
   render() {
