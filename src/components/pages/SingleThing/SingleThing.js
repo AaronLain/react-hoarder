@@ -2,7 +2,7 @@ import React from 'react';
 import itemData from '../../../helpers/data/thingData';
 
 import './SingleThing.scss';
-import thingData from '../../../helpers/data/thingData';
+
 
 class SingleThing extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class SingleThing extends React.Component {
 
   removeItem = () => {
     const { itemId } = this.props.match.params;
-    thingData.deleteItem(itemId)
+    itemData.deleteItem(itemId)
       .then(() => this.props.history.push('/home'))
       .catch((err) => console.error(err));
   }
