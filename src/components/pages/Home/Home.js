@@ -1,7 +1,7 @@
 import React from 'react';
 
 import authData from '../../../helpers/data/authData';
-import thingData from '../../../helpers/data/thingData';
+import itemData from '../../../helpers/data/thingData';
 import ItemCard from '../../shared/ItemCard/ItemCard';
 
 import './Home.scss';
@@ -13,8 +13,14 @@ class Home extends React.Component {
 
   getItems = () => {
     const uid = authData.getUid();
-    thingData.getItemsByUid(uid)
+    itemData.getItemsByUid(uid)
       .then((items) => this.setState({ items }))
+      .catch((err) => console.error(err));
+  }
+
+  removeItem = (itemId) => {
+    itemData.deleteItem(itemId)
+      .then(() => this.getItems())
       .catch((err) => console.error(err));
   }
 
@@ -25,7 +31,7 @@ class Home extends React.Component {
   render() {
     const { items } = this.state;
     const buildItemCards = items.map((item) => (
-      <ItemCard key={item.id} item={item} />
+      <ItemCard key={item.id} item={item} removeItem={this.removeItem}/>
     ));
     return (
       <div className="container">
