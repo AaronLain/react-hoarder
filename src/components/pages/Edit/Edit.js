@@ -3,7 +3,6 @@ import React from 'react';
 import './Edit.scss';
 import authData from '../../../helpers/data/authData';
 import itemData from '../../../helpers/data/thingData';
-import { auth } from 'firebase';
 
 class Edit extends React.Component {
   state = {
@@ -43,6 +42,7 @@ class Edit extends React.Component {
 
   updateItem = (e) => {
     e.preventDefault();
+    const { itemId } = this.props.match.params;
     const {
       itemName,
       itemImage,
@@ -54,11 +54,10 @@ class Edit extends React.Component {
       itemDescription,
       uid: authData.getUid(),
     };
-    itemData.putItem(updatedItem)
+    itemData.putItem(itemId, updatedItem)
       .then(() => this.props.history.push('/home'))
-      .catch((err) => console.error('cannot update scat:', err));
+      .catch((err) => console.error('cannot update item:', err));
   }
-
 
   render() {
     const {
@@ -107,3 +106,5 @@ class Edit extends React.Component {
     );
   }
 }
+
+export default Edit;
