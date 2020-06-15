@@ -2,6 +2,7 @@ import React from 'react';
 import itemData from '../../../helpers/data/thingData';
 
 import './SingleThing.scss';
+import thingData from '../../../helpers/data/thingData';
 
 class SingleThing extends React.Component {
   state = {
@@ -15,6 +16,13 @@ class SingleThing extends React.Component {
       .catch((err) => console.error("can't get singleItem", err));
   }
 
+  removeItem = () => {
+    const { itemId } = this.props.match.params;
+    thingData.deleteItem(itemId)
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error(err));
+  }
+
   render() {
     const { item } = this.state;
     return (
@@ -23,6 +31,7 @@ class SingleThing extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{item.itemName}</h5>
             <p className="card-text">{item.itemDescription}</p>
+            <button className="btn btn-danger" onClick={this.removeItem}>Delete</button>
           </div>
         </div>
       </div>
