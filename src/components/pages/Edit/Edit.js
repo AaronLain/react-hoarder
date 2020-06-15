@@ -68,7 +68,7 @@ class Edit extends React.Component {
 
     return (
       <div className="EditItem col-12">
-        <h1>Edit Item</h1>
+        <h1 className="title">Edit Item</h1>
         <form className="col-6 offset-3 text-left">
           <div className="form-group">
             <label htmlFor="item-name">Name</label>

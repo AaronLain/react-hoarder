@@ -1,7 +1,18 @@
 @import 'variables';
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300&display=swap');
 
 
 body {
   background-color: $favColor;
+  background-size: contain;
 }
+
+.title {
+  font-family: 'Playfair Display', serif;
+}
+
+.subtitle {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+

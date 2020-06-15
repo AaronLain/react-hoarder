@@ -35,6 +35,7 @@ class SingleThing extends React.Component {
             <p className="card-text">{item.itemDescription}</p>
             <Link className='btn btn-warning' to={editLink}>Edit</Link>
             <button className="btn btn-danger" onClick={this.removeItem}>Delete</button>
+            <img src={item.itemImage} alt="" className="card-img-bottom"/>
           </div>
         </div>
       </div>
