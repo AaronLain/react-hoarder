@@ -15,7 +15,7 @@ class ItemCard extends React.Component {
     const { item, removeItem } = this.props;
     const singleLink = `/items/${item.id}`;
     return (
-      <div className="ScatCard col-3">
+      <div className="ItemCard col-3">
         <div className="card">
           <div className="card-body">
             <img src={item.itemImage} alt="" className="card-img-top" />
